@@ -1,0 +1,103 @@
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
+section.todo-container {
+    margin: 0;
+    padding: 0;
+    font-size: 30px
+}
+
+section.todo-container * {
+    font-family: 'Open Sans', sans-serif
+}
+
+section.todo-container ul#todo-tasks {
+    list-style-type: none;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ddd
+}
+
+section.todo-container ul#todo-tasks li.add-new,
+section.todo-container ul#todo-tasks li.tasks {
+    margin-bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: 0;
+    overflow: auto;
+    position: relative;
+    word-wrap: break-word;
+    border-bottom: 1px solid #ddd;
+    list-style: unset;
+}
+
+section.todo-container #todo-tasks .label-checkbox {
+    width: 10%;
+    float: left
+}
+
+section.todo-container #todo-tasks input[type=checkbox] {
+    display: none
+}
+
+section.todo-container #todo-tasks li:first-child {
+    background-color: #f2f2f2;
+    color: #999
+}
+
+section.todo-container #todo-tasks li:first-child::placeholder {
+    color: #999;
+    opacity: 1
+}
+
+section.todo-container #todo-tasks li:first-child:-ms-input-placeholder {
+    color: #999
+}
+
+section.todo-container #todo-tasks li:first-child::-ms-input-placeholder {
+    color: #999
+}
+
+section.todo-container #todo-tasks li.add-new:before,
+section.todo-container #todo-tasks li.tasks:before {
+    margin-left: 40px;
+    border-left: 1px solid #fc9;
+    border-right: 1px solid #fc9;
+    content: "";
+    display: block;
+    width: 3px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100% z-index: -1
+}
+
+section.todo-container #todo-tasks input[type=text]:before {
+    margin-left: 40px
+}
+
+section.todo-container #todo-tasks input[type=text] {
+    display: flex;
+    background: 0 0;
+    padding: 0 0 0 10px;
+    color: #595959;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    outline: 0;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    box-shadow: unset;
+}
+
+section.todo-container #todo-tasks input[type=checkbox] {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    margin: 0 0 0 10px;
+    display: flex
+}
+
+section.todo-container ul#todo-tasks li:last-of-type {
+    border: 0
+}
