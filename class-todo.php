@@ -9,25 +9,31 @@ class Todo {
     private $results            = array();
 
     public function __construct() {
-      add_action('init',                          array($this, 'register_tasks_type') );
+
       add_action('wp_ajax_nopriv_ajax_data',      array($this, 'ajax_data'));
       add_action('wp_ajax_ajax_data',             array($this, 'ajax_data'));
+      add_action('init',                          array($this, 'register_tasks_type') );
       add_action('wp_enqueue_scripts',            array($this, 'load_js'));
-
-      add_action('wp_enqueue_scripts',            array($this, 'load_css'));
-
-      add_shortcode('todo',                       array($this, 'shortcode') );
-
+      add_action('wp_enqueue_scripts',            array($this, 'load_css'));      
+      //global $wp_query;
+      add_action('wp',             array($this, 'pre_init') );
 
     }
+    public function pre_init() {
+      if(!is_admin()) {
+        $this->init();
+      }
+    }
+
 
     public function init() {
+        add_shortcode('todo',                       array($this, 'shortcode') );
 
     }
 
     public function load_css() {
-      wp_register_style( 'todo-template',    PLUGIN_URL . '/css/template.min.css' );
-      wp_enqueue_style(  'todo-template',    PLUGIN_URL . '/css/template.min.css' );
+      wp_register_style( 'todo-template',    PLUGIN_URL . '/css/template.css' );
+      wp_enqueue_style(  'todo-template',    PLUGIN_URL . '/css/template.css' );
     }
     public function load_js() {
       wp_register_script('task-ajax', PLUGIN_URL . '/js/js.js', [], null, true);
@@ -74,6 +80,8 @@ class Todo {
     }
 
     public function ajax_data() {
+
+
 
       if(isset($_POST['req'])) $req = $_POST['req'];
       if(isset($_POST['pid'])) $pid = $_POST['pid'];

@@ -17,7 +17,7 @@ jQuery('section.todo-container').ready(function () {
                     task_name:  task_name,
                   },
                   success: function(response) {
-                    
+
                       jQuery('input.add-new').val('');
                       var new_item  = "<li class=\"tasks\" data-id="+response+"\">";
                           new_item += "<input type=\"checkbox\" />";
